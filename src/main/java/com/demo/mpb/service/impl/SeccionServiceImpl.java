@@ -20,32 +20,27 @@ public class SeccionServiceImpl implements ISeccionService{
 
 	@Override
 	public void registrar(Seccion objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void actualizar(Seccion objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);
 	}
 
 	@Override
 	public Seccion buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override
 	public List<Seccion> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Seccion>) repository.findAll();
 	}
 
 }

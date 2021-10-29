@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "roles")
 public class Rol implements Serializable {
@@ -23,6 +25,7 @@ public class Rol implements Serializable {
 	@Column
 	private Byte estado;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "rol", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Usuario> itemsUsuario = new ArrayList<>();
 
@@ -68,4 +71,5 @@ public class Rol implements Serializable {
 	public void setItemsUsuario(List<Usuario> itemsUsuario) {
 		this.itemsUsuario = itemsUsuario;
 	}
+	
 }

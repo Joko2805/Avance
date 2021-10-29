@@ -20,32 +20,27 @@ public class TrabajadorServiceImpl implements ITrabajadorService{
 
 	@Override
 	public void registrar(Trabajador objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void actualizar(Trabajador objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);		
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);		
 	}
 
 	@Override
 	public Trabajador buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override
 	public List<Trabajador> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Trabajador>) repository.findAll();
 	}
 
 }

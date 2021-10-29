@@ -20,32 +20,26 @@ public class UsuarioServiceImpl implements IUsuarioService{
 
 	@Override
 	public void registrar(Usuario objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void actualizar(Usuario objeto) {
-		// TODO Auto-generated method stub
-		
-	}
+		repository.save(objeto);	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);
 	}
 
 	@Override
 	public Usuario buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override
 	public List<Usuario> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Usuario>) repository.findAll();
 	}
 
 }

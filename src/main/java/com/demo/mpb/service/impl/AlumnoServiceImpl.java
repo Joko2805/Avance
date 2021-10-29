@@ -20,31 +20,26 @@ public class AlumnoServiceImpl implements IAlumnoService{
 
 	@Override
 	public void registrar(Alumno objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void actualizar(Alumno objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);
 	}
 
 	@Override
 	public Alumno buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override
 	public List<Alumno> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Alumno>) repository.findAll();
 	}	
 }

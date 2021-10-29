@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "distritos")
 public class Distrito implements Serializable {
@@ -23,12 +25,15 @@ public class Distrito implements Serializable {
 	@Column
 	private Byte estado;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "distrito",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Apoderado> itemsApoderado = new ArrayList<>();
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "distrito",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Alumno> itemsAlumno = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "distrito",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Trabajador> itemsTrabajador = new ArrayList<>();
 	
@@ -81,6 +86,14 @@ public class Distrito implements Serializable {
 
 	public void setItemsAlumno(List<Alumno> itemsAlumno) {
 		this.itemsAlumno = itemsAlumno;
+	}
+
+	public List<Trabajador> getItemsTrabajador() {
+		return itemsTrabajador;
+	}
+
+	public void setItemsTrabajador(List<Trabajador> itemsTrabajador) {
+		this.itemsTrabajador = itemsTrabajador;
 	}
 	
 }

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "usuarios")
 public class Usuario implements Serializable{
@@ -32,9 +34,11 @@ public class Usuario implements Serializable{
 																+ "references roles(rol_id)"))
 	private Rol rol;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
 	private List<Alumno> itemsAlumno = new ArrayList<>();	
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
 	private List<Trabajador> itemsTrabajador = new ArrayList<>();
 
@@ -98,4 +102,13 @@ public class Usuario implements Serializable{
 	public void setItemsAlumno(List<Alumno> itemsAlumno) {
 		this.itemsAlumno = itemsAlumno;
 	}
+
+	public List<Trabajador> getItemsTrabajador() {
+		return itemsTrabajador;
+	}
+
+	public void setItemsTrabajador(List<Trabajador> itemsTrabajador) {
+		this.itemsTrabajador = itemsTrabajador;
+	}
+	
 }

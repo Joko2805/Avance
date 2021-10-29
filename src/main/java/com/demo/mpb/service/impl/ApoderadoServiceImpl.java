@@ -20,31 +20,26 @@ public class ApoderadoServiceImpl implements IApoderadoService{
 
 	@Override
 	public void registrar(Apoderado objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);
 	}
 
 	@Override
 	public void actualizar(Apoderado objeto) {
-		// TODO Auto-generated method stub
-		
+		repository.save(objeto);		
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);		
 	}
 
 	@Override
 	public Apoderado buscarPorId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override
 	public List<Apoderado> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Apoderado>) repository.findAll();
 	}
 }

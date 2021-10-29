@@ -44,8 +44,7 @@ public class AsignacionServiceImpl implements IAsignacionService{
 
 	@Override
 	public List<Asignacion> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Asignacion>) repository.findAll();
 	}
 
 }

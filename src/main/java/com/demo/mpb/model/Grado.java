@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "grados")
 public class Grado implements Serializable{
@@ -23,6 +25,7 @@ public class Grado implements Serializable{
 	@Column
 	private Byte estado;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "grado", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Seccion> itemsSeccion = new ArrayList<>();
 	

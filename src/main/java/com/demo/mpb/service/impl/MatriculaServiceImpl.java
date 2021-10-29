@@ -44,8 +44,7 @@ public class MatriculaServiceImpl implements IMatriculaService{
 
 	@Override
 	public List<Matricula> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Matricula>) repository.findAll();
 	}
 
 }

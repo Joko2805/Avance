@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "cursos")
 public class Curso implements Serializable {
@@ -32,9 +34,11 @@ public class Curso implements Serializable {
 																+ "references grados(grado_id)"))
 	private Grado grado;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "curso", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Calificacion> itemsCalificacion = new ArrayList<>();
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "curso", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Asignacion> itemsAsignacion = new ArrayList<>();
 
@@ -80,5 +84,29 @@ public class Curso implements Serializable {
 
 	public void setEstado(Byte estado) {
 		this.estado = estado;
+	}
+
+	public Grado getGrado() {
+		return grado;
+	}
+
+	public void setGrado(Grado grado) {
+		this.grado = grado;
+	}
+
+	public List<Calificacion> getItemsCalificacion() {
+		return itemsCalificacion;
+	}
+
+	public void setItemsCalificacion(List<Calificacion> itemsCalificacion) {
+		this.itemsCalificacion = itemsCalificacion;
+	}
+
+	public List<Asignacion> getItemsAsignacion() {
+		return itemsAsignacion;
+	}
+
+	public void setItemsAsignacion(List<Asignacion> itemsAsignacion) {
+		this.itemsAsignacion = itemsAsignacion;
 	}
 }

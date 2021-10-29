@@ -44,8 +44,7 @@ public class CalificacionServiceImpl implements ICalificacionService{
 
 	@Override
 	public List<Calificacion> listar() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<Calificacion>) repository.findAll();
 	}
 
 

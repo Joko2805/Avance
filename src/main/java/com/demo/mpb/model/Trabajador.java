@@ -164,4 +164,37 @@ public class Trabajador implements Serializable{
 	public void setEstado(Byte estado) {
 		this.estado = estado;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Cargo getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
+	}
+
+	public Distrito getDistrito() {
+		return distrito;
+	}
+
+	public void setDistrito(Distrito distrito) {
+		this.distrito = distrito;
+	}
+
+	public List<Asignacion> getItemsAsignacion() {
+		return itemsAsignacion;
+	}
+
+	public void setItemsAsignacion(List<Asignacion> itemsAsignacion) {
+		this.itemsAsignacion = itemsAsignacion;
+	}
+	
 }

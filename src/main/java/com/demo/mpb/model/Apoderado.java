@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "apoderados")
@@ -49,6 +51,7 @@ public class Apoderado implements Serializable{
 																+ "references distritos(distrito_id)"))
 	private Distrito distrito;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "apoderado",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Alumno> itemsAlumno = new ArrayList<>();
 	
