@@ -7,12 +7,17 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Contiene toda la informacion relativa de los alumnos")
 @Entity
 @Table(name = "alumnos")
 public class Alumno implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(notes = "Identificador del Alumno")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "alumno_id")

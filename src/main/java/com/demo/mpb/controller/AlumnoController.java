@@ -11,6 +11,9 @@ import org.springframework.web.server.ResponseStatusException;
 import com.demo.mpb.model.Alumno;
 import com.demo.mpb.service.IAlumnoService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+
 @RestController
 @RequestMapping("/alumno")
 public class AlumnoController {
@@ -19,18 +22,21 @@ public class AlumnoController {
 	private IAlumnoService service;
 
 	@GetMapping("/listar")
+	@ApiOperation(value = "Devuelve la lista de los alumnos",httpMethod = "GET",nickname = "listarAlumnos")
 	public ResponseEntity<?> listar(){
 		List<Alumno> lista = service.listar();
 		return new ResponseEntity<>(lista,HttpStatus.OK);
 	}
 	
 	@PostMapping("/registrar")
+	@ApiOperation(value = "Registra un nuevo alumno",httpMethod = "POST",nickname = "registrarAlumno")
 	public ResponseEntity<?> registrar(@RequestBody Alumno alumno){
 		service.registrar(alumno);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@PutMapping("/actualizar")
+	@ApiOperation(value = "Actualizar la informacion de un alumno",httpMethod = "PUT",nickname = "actualizarAlumno")
 	public ResponseEntity<?> actualizar(@RequestBody Alumno alumno){
 		Alumno a = service.buscarPorId(alumno.getAlumnoId());
 		if(a == null)
@@ -40,7 +46,9 @@ public class AlumnoController {
 	}
 	
 	@DeleteMapping("/eliminar/{id}")
-	public ResponseEntity<?> eliminar(@PathVariable(name = "id") Integer id){
+	@ApiOperation(value = "Elimina un alumno",httpMethod = "DELETE",nickname = "eliminarAlumno")
+	public ResponseEntity<?> eliminar(@ApiParam(value = "Identificador del Alumno", required = true)
+										@PathVariable(name = "id") Integer id){
 		Alumno alumno = service.buscarPorId(id);
 		if(alumno == null)
 			throw new ResponseStatusException(HttpStatus.OK);
@@ -49,7 +57,9 @@ public class AlumnoController {
 	}
 	
 	@GetMapping("/buscar/{id}")
-	public ResponseEntity<?> buscarPorId(@PathVariable(name = "id") Integer id){
+	@ApiOperation(value = "Buscar la informacion de un alumno",httpMethod = "GET",nickname = "buscarAlumno")
+	public ResponseEntity<?> buscarPorId(@ApiParam(value = "Identificador del Alumno", required = true)
+											@PathVariable(name = "id") Integer id){
 		Alumno alumno = service.buscarPorId(id);
 		if(alumno == null)
 			throw new ResponseStatusException(HttpStatus.OK);
