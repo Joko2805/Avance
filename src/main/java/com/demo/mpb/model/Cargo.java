@@ -6,12 +6,17 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Contiene toda la informacion relativa de los cargos")
 @Entity
 @Table(name = "cargos")
 public class Cargo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(notes = "Identificador del Cargo")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cargo_id")

@@ -8,12 +8,17 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Contiene toda la informacion relativa de los roles")
 @Entity
 @Table(name = "roles")
 public class Rol implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(notes = "Identificador del Rol")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "rol_id")

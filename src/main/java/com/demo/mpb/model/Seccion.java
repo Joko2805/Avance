@@ -6,15 +6,20 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Contiene toda la informacion relativa de las secciones")
 @Entity
 @Table(name = "secciones")
 public class Seccion implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(notes = "Identificador de la Seccion")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "seccion_id")
+	@Column(name = "seccion_id")
 	private Integer seccionId;
 	
 	@Column(length = 70)

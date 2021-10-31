@@ -9,16 +9,20 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
+@ApiModel(description = "Contiene toda la informacion relativa de los apoderados")
 @Entity
 @Table(name = "apoderados")
 public class Apoderado implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(notes = "Identificador del Apoderado")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "apoderado_id")
+	@Column(name = "apoderado_id")
 	private Integer apoderadoId;
 	
 	@Column(length = 8)

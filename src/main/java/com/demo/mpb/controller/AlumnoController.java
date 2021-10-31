@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,21 +22,23 @@ public class AlumnoController {
 	@Autowired
 	private IAlumnoService service;
 
-	@GetMapping("/listar")
+	@GetMapping(value = "/listar", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ApiOperation(value = "Devuelve la lista de los alumnos",httpMethod = "GET",nickname = "listarAlumnos")
 	public ResponseEntity<?> listar(){
 		List<Alumno> lista = service.listar();
 		return new ResponseEntity<>(lista,HttpStatus.OK);
 	}
 	
-	@PostMapping("/registrar")
+	@PostMapping(value = "/registrar", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, 
+									produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ApiOperation(value = "Registra un nuevo alumno",httpMethod = "POST",nickname = "registrarAlumno")
 	public ResponseEntity<?> registrar(@RequestBody Alumno alumno){
 		service.registrar(alumno);
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/actualizar")
+	@PutMapping(value = "/actualizar", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, 
+									produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ApiOperation(value = "Actualizar la informacion de un alumno",httpMethod = "PUT",nickname = "actualizarAlumno")
 	public ResponseEntity<?> actualizar(@RequestBody Alumno alumno){
 		Alumno a = service.buscarPorId(alumno.getAlumnoId());
@@ -45,7 +48,7 @@ public class AlumnoController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/eliminar/{id}")
+	@DeleteMapping(value = "/eliminar/{id}",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ApiOperation(value = "Elimina un alumno",httpMethod = "DELETE",nickname = "eliminarAlumno")
 	public ResponseEntity<?> eliminar(@ApiParam(value = "Identificador del Alumno", required = true)
 										@PathVariable(name = "id") Integer id){
@@ -56,7 +59,7 @@ public class AlumnoController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping("/buscar/{id}")
+	@GetMapping(value = "/buscar/{id}",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	@ApiOperation(value = "Buscar la informacion de un alumno",httpMethod = "GET",nickname = "buscarAlumno")
 	public ResponseEntity<?> buscarPorId(@ApiParam(value = "Identificador del Alumno", required = true)
 											@PathVariable(name = "id") Integer id){

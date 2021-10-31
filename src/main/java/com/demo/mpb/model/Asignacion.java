@@ -4,14 +4,20 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Contiene toda la informacion relativa de las asignaciones")
 @Entity
 @Table(name = "asignaciones")
 public class Asignacion implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(notes = "Identificador de la asignacion")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "asignacion_id")
 	private Integer asignacionId;
 	
 	@Column(length = 70)

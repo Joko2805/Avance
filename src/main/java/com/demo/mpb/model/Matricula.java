@@ -7,12 +7,17 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "Contiene toda la informacion relativa de la matricula")
 @Entity
 @Table(name = "matriculas")
 public class Matricula implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@ApiModelProperty(notes = "Identificador de la matricula")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "matricula_id")
