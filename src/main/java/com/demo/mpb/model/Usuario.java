@@ -25,9 +25,9 @@ public class Usuario implements Serializable{
 	private Integer usuarioId;
 	
 	@Column(length = 30)
-	private String usuario;
+	private String nombreUsuario;
 	
-	@Column(length = 30)
+	@Column
 	private String contrasenia;
 	
 	@Column
@@ -55,15 +55,6 @@ public class Usuario implements Serializable{
 		super();
 	}
 
-	public Usuario(Integer usuarioId, String usuario, String contrasenia, Byte estado, Rol rol) {
-		super();
-		this.usuarioId = usuarioId;
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
-		this.estado = estado;
-		this.rol = rol;
-	}
-
 	public Integer getUsuarioId() {
 		return usuarioId;
 	}
@@ -71,13 +62,13 @@ public class Usuario implements Serializable{
 	public void setUsuarioId(Integer usuarioId) {
 		this.usuarioId = usuarioId;
 	}
-
-	public String getUsuario() {
-		return usuario;
+	
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public String getContrasenia() {

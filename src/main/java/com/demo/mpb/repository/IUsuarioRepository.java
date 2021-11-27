@@ -1,5 +1,7 @@
 package com.demo.mpb.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,4 +16,8 @@ public interface IUsuarioRepository extends CrudRepository<Usuario, Integer>{
 	@Modifying
 	@Query(value = "UPDATE Usuario u SET u.estado = 0 WHERE u.usuarioId = :id")
 	void eliminar(@Param("id") Integer id);
+	
+	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
+	
+	 
 }
