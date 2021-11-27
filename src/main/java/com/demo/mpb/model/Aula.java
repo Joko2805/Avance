@@ -31,7 +31,7 @@ public class Aula implements Serializable{
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "aula", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
-	private List<Horario> itemsHorarios = new ArrayList<>();
+	private List<Seccion> itemsSecciones = new ArrayList<>();
 
 	public Integer getAulaId() {
 		return aulaId;
@@ -47,14 +47,6 @@ public class Aula implements Serializable{
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public List<Horario> getItemsHorarios() {
-		return itemsHorarios;
-	}
-
-	public void setItemsHorarios(List<Horario> itemsHorarios) {
-		this.itemsHorarios = itemsHorarios;
 	}
 
 	public Byte getEstado() {

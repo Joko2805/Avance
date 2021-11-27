@@ -36,6 +36,12 @@ public class Seccion implements Serializable{
 																+ " references grados(grado_id)"))
 	private Grado grado;
 	
+	@ManyToOne
+	@JoinColumn(name = "aula_id", nullable = false,
+				foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key (aula_id)"
+																+ " references aulas(aula_id)"))
+	private Aula aula;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "seccion", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Matricula> itemsMatriculas = new ArrayList<>();
@@ -85,5 +91,13 @@ public class Seccion implements Serializable{
 
 	public void setGrado(Grado grado) {
 		this.grado = grado;
+	}
+
+	public Aula getAula() {
+		return aula;
+	}
+
+	public void setAula(Aula aula) {
+		this.aula = aula;
 	}
 }

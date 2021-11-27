@@ -22,7 +22,10 @@ public class Horario implements Serializable{
 	private Integer horarioId;
 	
 	@Temporal(TemporalType.TIME)
-	private Date hora;
+	private Date horaInicio;
+	
+	@Temporal(TemporalType.TIME)
+	private Date horaFin;
 	
 	@Column(name = "dia")
 	private String dia;
@@ -42,12 +45,6 @@ public class Horario implements Serializable{
 																+ "references secciones(seccion_id)"))
 	private Seccion seccion;
 	
-	@ManyToOne
-	@JoinColumn(name = "aula_id", nullable = false,
-				foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key (aula_id) "
-																+ "references aulas(aula_id)"))
-	private Aula aula;
-	
 
 	public Integer getHorarioId() {
 		return horarioId;
@@ -56,13 +53,29 @@ public class Horario implements Serializable{
 	public void setHorarioId(Integer horarioId) {
 		this.horarioId = horarioId;
 	}
-
-	public Date getHora() {
-		return hora;
+	
+	public Date getHoraInicio() {
+		return horaInicio;
 	}
 
-	public void setHora(Date hora) {
-		this.hora = hora;
+	public void setHoraInicio(Date horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public Date getHoraFin() {
+		return horaFin;
+	}
+
+	public void setHoraFin(Date horaFin) {
+		this.horaFin = horaFin;
+	}
+
+	public Byte getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Byte estado) {
+		this.estado = estado;
 	}
 
 	public Asignacion getAsignacion() {
@@ -79,14 +92,6 @@ public class Horario implements Serializable{
 
 	public void setSeccion(Seccion seccion) {
 		this.seccion = seccion;
-	}
-
-	public Aula getAula() {
-		return aula;
-	}
-
-	public void setAula(Aula aula) {
-		this.aula = aula;
 	}
 
 	public String getDia() {
