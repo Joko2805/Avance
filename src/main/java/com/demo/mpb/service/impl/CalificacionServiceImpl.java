@@ -20,26 +20,22 @@ public class CalificacionServiceImpl implements ICalificacionService{
 
 	@Override
 	public void registrar(Calificacion calificacion) {
-		// TODO Auto-generated method stub
-		
+		repository.save(calificacion);
 	}
 
 	@Override
 	public void actualizar(Calificacion calificacion) {
-		// TODO Auto-generated method stub
-		
+		repository.save(calificacion);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);
 	}
 
 	@Override
-	public Calificacion buscarId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Calificacion buscarPorId(Integer id) {
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override

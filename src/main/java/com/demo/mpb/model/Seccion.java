@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -34,8 +36,13 @@ public class Seccion implements Serializable{
 																+ " references grados(grado_id)"))
 	private Grado grado;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "seccion", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Matricula> itemsMatriculas = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "seccion", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
+	private List<Horario> itemsHorarios = new ArrayList<>();
 	
 	public Seccion() {
 		

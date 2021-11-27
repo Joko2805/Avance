@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -68,6 +70,7 @@ public class Trabajador implements Serializable{
 																+ "references distritos(distrito_id)"))
 	private Distrito distrito;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "trabajador", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Asignacion> itemsAsignacion = new ArrayList<>();
 

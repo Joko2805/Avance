@@ -1,8 +1,13 @@
 package com.demo.mpb.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -23,6 +28,12 @@ public class Asignacion implements Serializable {
 	@Column(length = 70)
 	private String descripcion;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
+	
+	@Column
+	private String estado;
+	
 	@ManyToOne
 	@JoinColumn(name = "trabajador_id", nullable = false,
 				foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key (trabajador_id) "
@@ -34,6 +45,10 @@ public class Asignacion implements Serializable {
 				foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key (curso_id) "
 																+ "references cursos(curso_id)"))
 	private Curso curso;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "asignacion", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
+	private List<Horario> itemsHorarios = new ArrayList<>();
 	
 	public Asignacion() {
 		super();
@@ -60,4 +75,46 @@ public class Asignacion implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public Trabajador getTrabajador() {
+		return trabajador;
+	}
+
+	public void setTrabajador(Trabajador trabajador) {
+		this.trabajador = trabajador;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+
+	public List<Horario> getItemsHorarios() {
+		return itemsHorarios;
+	}
+
+	public void setItemsHorarios(List<Horario> itemsHorarios) {
+		this.itemsHorarios = itemsHorarios;
+	}
+	
 }
+

@@ -55,6 +55,12 @@ public class Apoderado implements Serializable{
 																+ "references distritos(distrito_id)"))
 	private Distrito distrito;
 	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", nullable = false,
+				foreignKey = @ForeignKey(foreignKeyDefinition = "foreign key (usuario_id) "
+																+ "references usuarios(usuario_id)"))
+	private Usuario usuario;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "apoderado",cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Alumno> itemsAlumno = new ArrayList<>();
@@ -164,5 +170,12 @@ public class Apoderado implements Serializable{
 	public void setItemsAlumno(List<Alumno> itemsAlumno) {
 		this.itemsAlumno = itemsAlumno;
 	}
-	
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }

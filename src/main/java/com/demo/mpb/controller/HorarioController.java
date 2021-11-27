@@ -16,64 +16,63 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.demo.mpb.model.Matricula;
-import com.demo.mpb.service.IMatriculaService;
+import com.demo.mpb.model.Horario;
+import com.demo.mpb.service.IHorarioService;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/matricula")
-public class MatriculaController {
-	
+@RequestMapping("/horario")
+public class HorarioController {
+
 	@Autowired
-	private IMatriculaService service;
+	private IHorarioService service;
 	
 	@GetMapping(value = "/listar", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Devuelve la lista de las matriculas",httpMethod = "GET",nickname = "listarMatriculas")
+	@ApiOperation(value = "Devuelve la lista de los horarios",httpMethod = "GET",nickname = "listarHorarios")
 	public ResponseEntity<?> listar(){
-		List<Matricula> lista = service.listar();
+		List<Horario> lista = service.listar();
 		return new ResponseEntity<>(lista,HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/registrar", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, 
-									produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Registra una nueva matricula",httpMethod = "POST",nickname = "registrarMatricula")
-	public ResponseEntity<?> registrar(@RequestBody Matricula matricula){
-		service.registrar(matricula);
+										produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Registra una nuevo horario",httpMethod = "POST",nickname = "registrarHorario")
+	public ResponseEntity<?> registrar(@RequestBody Horario horario){
+		service.registrar(horario);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
 	@PutMapping(value = "/actualizar", consumes = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE}, 
-									produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Actualizar la informacion de una matricula",httpMethod = "PUT",nickname = "actualizarMatricula")
-	public ResponseEntity<?> actualizar(@RequestBody Matricula matricula){
-		Matricula m = service.buscarPorId(matricula.getMatriculaId());
-		if(m == null)
+										produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Actualizar la informacion de un horario",httpMethod = "PUT",nickname = "actualizarHorario")
+	public ResponseEntity<?> actualizar(@RequestBody Horario horario){
+		Horario h = service.buscarPorId(horario.getHorarioId());
+		if(h == null)
 			throw new ResponseStatusException(HttpStatus.OK);
-		service.actualizar(matricula);
+		service.actualizar(horario);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/eliminar/{id}",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Elimina una matricula",httpMethod = "DELETE",nickname = "eliminarMatricula")
-	public ResponseEntity<?> eliminar(@ApiParam(value = "Identificador de la matricula", required = true)
+	@ApiOperation(value = "Elimina un horario",httpMethod = "DELETE",nickname = "eliminarAula")
+	public ResponseEntity<?> eliminar(@ApiParam(value = "Identificador de un horario", required = true)
 										@PathVariable(name = "id") Integer id){
-		Matricula matricula = service.buscarPorId(id);
-		if(matricula == null)
+		Horario horario= service.buscarPorId(id);
+		if(horario == null)
 			throw new ResponseStatusException(HttpStatus.OK);
 		service.eliminar(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/buscar/{id}",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
-	@ApiOperation(value = "Buscar la informacion de una matricula",httpMethod = "GET",nickname = "buscarMatricula")
-	public ResponseEntity<?> buscarPorId(@ApiParam(value = "Identificador de la Matricula", required = true)
+	@ApiOperation(value = "Buscar la informacion de un horario",httpMethod = "GET",nickname = "buscarHorario")
+	public ResponseEntity<?> buscarPorId(@ApiParam(value = "Identificador del horario", required = true)
 											@PathVariable(name = "id") Integer id){
-		Matricula matricula = service.buscarPorId(id);
-		if(matricula == null)
+		Horario horario= service.buscarPorId(id);
+		if(horario == null)
 			throw new ResponseStatusException(HttpStatus.OK);
-		return new ResponseEntity<>(matricula,HttpStatus.OK);
+		return new ResponseEntity<>(horario,HttpStatus.OK);
 	}
-
 }

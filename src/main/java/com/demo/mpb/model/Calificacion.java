@@ -25,7 +25,7 @@ public class Calificacion implements Serializable{
 	private Double primerBimestre;
 	
 	@Column
-	private Double segundorBimestre;
+	private Double segundoBimestre;
 	
 	@Column
 	private Double tercerBimestre;
@@ -60,7 +60,7 @@ public class Calificacion implements Serializable{
 		super();
 		this.calificacionId = calificacionId;
 		this.primerBimestre = primerBimestre;
-		this.segundorBimestre = segundorBimestre;
+		this.segundoBimestre = segundorBimestre;
 		this.tercerBimestre = tercerBimestre;
 		this.cuartoBimestre = cuartoBimestre;
 		this.fecha = fecha;
@@ -83,12 +83,12 @@ public class Calificacion implements Serializable{
 		this.primerBimestre = primerBimestre;
 	}
 
-	public Double getSegundorBimestre() {
-		return segundorBimestre;
+	public Double getSegundoBimestre() {
+		return segundoBimestre;
 	}
 
-	public void setSegundorBimestre(Double segundorBimestre) {
-		this.segundorBimestre = segundorBimestre;
+	public void setSegundoBimestre(Double segundoBimestre) {
+		this.segundoBimestre = segundoBimestre;
 	}
 
 	public Double getTercerBimestre() {
@@ -121,5 +121,21 @@ public class Calificacion implements Serializable{
 
 	public void setEstado(Byte estado) {
 		this.estado = estado;
+	}
+
+	public Matricula getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 }

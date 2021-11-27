@@ -20,26 +20,22 @@ public class AsignacionServiceImpl implements IAsignacionService{
 
 	@Override
 	public void registrar(Asignacion asignacion) {
-		// TODO Auto-generated method stub
-		
+		repository.save(asignacion);
 	}
 
 	@Override
 	public void actualizar(Asignacion asignacion) {
-		// TODO Auto-generated method stub
-		
+		repository.save(asignacion);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);
 	}
 
 	@Override
-	public Asignacion buscarId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Asignacion buscarPorId(Integer id) {
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override

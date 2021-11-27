@@ -20,26 +20,22 @@ public class MatriculaServiceImpl implements IMatriculaService{
 
 	@Override
 	public void registrar(Matricula matricula) {
-		// TODO Auto-generated method stub
-		
+		repository.save(matricula);
 	}
 
 	@Override
 	public void actualizar(Matricula matricula) {
-		// TODO Auto-generated method stub
-		
+		repository.save(matricula);
 	}
 
 	@Override
 	public void eliminar(Integer id) {
-		// TODO Auto-generated method stub
-		
+		repository.eliminar(id);
 	}
 
 	@Override
-	public Matricula buscarId(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Matricula buscarPorId(Integer id) {
+		return repository.findById(id).orElse(null);
 	}
 
 	@Override

@@ -4,14 +4,12 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
 
-import com.demo.mpb.model.Usuario;
+import com.demo.mpb.model.Aula;
 
-@Repository
-public interface IUsuarioRepository extends CrudRepository<Usuario, Integer>{
+public interface IAulaRepository extends CrudRepository<Aula, Integer>{
 
 	@Modifying
-	@Query(value = "UPDATE Usuario u SET u.estado = 0 WHERE u.usuarioId = :id")
+	@Query(value = "UPDATE Aula a SET a.estado = 0 WHERE a.aulaId = :id")
 	void eliminar(@Param("id") Integer id);
 }

@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -65,6 +67,7 @@ public class Alumno implements Serializable{
 															+ " references usuarios(usuario_id)"))
 	private Usuario usuario;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "alumno", cascade = {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Matricula> itemsMatriculas = new ArrayList<>();
 	

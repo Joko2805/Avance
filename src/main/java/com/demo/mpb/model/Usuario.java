@@ -46,6 +46,10 @@ public class Usuario implements Serializable{
 	@JsonIgnore
 	@OneToMany(mappedBy = "usuario")
 	private List<Trabajador> itemsTrabajador = new ArrayList<>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "usuario")
+	private List<Apoderado> itemsApoderados = new ArrayList<>();
 
 	public Usuario() {
 		super();
