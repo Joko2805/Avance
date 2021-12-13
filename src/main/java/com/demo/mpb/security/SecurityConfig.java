@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/usuario/**").permitAll()
+				.antMatchers("/usuario/**","/authenticate/**").permitAll()
 				.antMatchers("/alumno/**").hasAnyAuthority("DIRECTOR","SECRETARIA","SUB DIRECTOR")
 				.antMatchers("/apoderado/**").hasAnyAuthority("DIRECTOR","SECRETARIA","SUB DIRECTOR")
 				.antMatchers("/asignacion/**").hasAnyAuthority("DIRECTOR","SECRETARIA","DOCENTE")
@@ -58,5 +58,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public AuthenticationManager authenticationManagerBean() throws Exception {
 		return super.authenticationManagerBean();
 	}	
-
 }
