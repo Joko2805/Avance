@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/authenticate/**").permitAll()
+				.antMatchers("/rol/**","/usuario/**","/authenticate/**").permitAll()
 				.antMatchers("/alumno/**").hasAnyAuthority("DIRECTOR","SECRETARIA","SUB DIRECTOR")
 				.antMatchers("/apoderado/**").hasAnyAuthority("DIRECTOR","SECRETARIA","SUB DIRECTOR")
 				.antMatchers("/asignacion/**").hasAnyAuthority("DIRECTOR","SECRETARIA","DOCENTE")
@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/grado/**").hasAnyAuthority("DIRECTOR","SECRETARIA")
 				.antMatchers("/horario/**").hasAnyAuthority("DIRECTOR","SECRETARIA","ALUMNO")
 				.antMatchers("/matricula/**").hasAnyAuthority("DIRECTOR","SECRETARIA")
-				.antMatchers("/rol/**").hasAuthority("DIRECTOR")
+				//.antMatchers("/rol/**").hasAuthority("DIRECTOR")
 				.antMatchers("/seccion/**").hasAnyAuthority("DIRECTOR","SECRETARIA","DOCENTE")
 				.antMatchers("/trabajador/**").hasAnyAuthority("DIRECTOR","SUB DIRECTOR");
 		

@@ -36,7 +36,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
 		String uri = request.getRequestURI();
 
-		if (!uri.contains("/authenticate")) {
+		if (!uri.contains("/authenticate") && !uri.contains("/usuario/registrar") && !uri.contains("/rol/registrar")) {
 			final String requestTokenHeader = request.getHeader("Authorization");
 
 			String username;
