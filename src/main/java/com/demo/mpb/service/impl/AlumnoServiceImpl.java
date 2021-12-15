@@ -41,5 +41,10 @@ public class AlumnoServiceImpl implements IAlumnoService{
 	@Override
 	public List<Alumno> listar() {
 		return (List<Alumno>) repository.findAll();
+	}
+
+	@Override
+	public Alumno buscarPorNombreUsuario(String usuario) {
+		return repository.buscarPorNombreUsuario(usuario);
 	}	
 }

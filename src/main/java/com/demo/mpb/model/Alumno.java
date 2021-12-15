@@ -46,6 +46,10 @@ public class Alumno implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
+	@Lob
+	@Column
+	private byte[] foto;
+	
 	@Column
 	private Byte estado;
 	
@@ -184,6 +188,12 @@ public class Alumno implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
 }

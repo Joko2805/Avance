@@ -6,4 +6,5 @@ import com.demo.mpb.util.ICrud;
 
 public interface IAlumnoService extends ICrud<Alumno> {
 	
+	Alumno buscarPorNombreUsuario(String usuario);
 }

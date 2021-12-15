@@ -43,7 +43,7 @@ public class AlumnoController {
 	public ResponseEntity<?> actualizar(@RequestBody Alumno alumno){
 		Alumno a = service.buscarPorId(alumno.getAlumnoId());
 		if(a == null)
-			throw new ResponseStatusException(HttpStatus.OK);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		service.actualizar(alumno);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -54,7 +54,7 @@ public class AlumnoController {
 										@PathVariable(name = "id") Integer id){
 		Alumno alumno = service.buscarPorId(id);
 		if(alumno == null)
-			throw new ResponseStatusException(HttpStatus.OK);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		service.eliminar(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
@@ -65,7 +65,18 @@ public class AlumnoController {
 											@PathVariable(name = "id") Integer id){
 		Alumno alumno = service.buscarPorId(id);
 		if(alumno == null)
-			throw new ResponseStatusException(HttpStatus.OK);
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(alumno,HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/find/{username}",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Buscar un alumno por el nombre de usuario",httpMethod = "GET",nickname = "buscarPorNombreUsuario")
+	public ResponseEntity<?> findByUsername(@ApiParam(value = "Nombre de usuario del Alumno", required = true) 
+												@PathVariable(name = "username") String username){
+		Alumno alumno = service.buscarPorNombreUsuario(username);
+		if(alumno == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<>(alumno,HttpStatus.OK);
 	}
 }
