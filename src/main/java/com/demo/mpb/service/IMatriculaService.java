@@ -5,4 +5,5 @@ import com.demo.mpb.util.ICrud;
 
 public interface IMatriculaService extends ICrud<Matricula>{
 
+	Matricula buscarPorNombreUsuario(String nombreUsuario);
 }

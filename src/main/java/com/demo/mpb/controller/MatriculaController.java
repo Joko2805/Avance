@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.demo.mpb.model.Alumno;
 import com.demo.mpb.model.Matricula;
 import com.demo.mpb.service.IMatriculaService;
 
@@ -73,6 +74,17 @@ public class MatriculaController {
 		Matricula matricula = service.buscarPorId(id);
 		if(matricula == null)
 			throw new ResponseStatusException(HttpStatus.OK);
+		return new ResponseEntity<>(matricula,HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/find/{username}",produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Buscar un matricula por el nombre de usuario",httpMethod = "GET",nickname = "buscarPorNombreUsuarioMatricula")
+	public ResponseEntity<?> findByUsername(@ApiParam(value = "Nombre de usuario del Alumno", required = true) 
+												@PathVariable(name = "username") String username){
+		Matricula matricula = service.buscarPorNombreUsuario(username);
+		if(matricula == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 		return new ResponseEntity<>(matricula,HttpStatus.OK);
 	}
 

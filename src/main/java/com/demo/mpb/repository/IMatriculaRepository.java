@@ -14,4 +14,7 @@ public interface IMatriculaRepository extends CrudRepository<Matricula, Integer>
 	@Modifying
 	@Query(value = "UPDATE Matricula m SET m.estado = 0 WHERE m.matriculaId = :id")
 	void eliminar(@Param("id") Integer id);
+	
+	@Query(value = "SELECT m FROM Matricula m WHERE m.alumno.usuario.nombreUsuario = :usuario")
+	Matricula buscarPorNombreUsuario(@Param("usuario") String nombreUsuario);
 }

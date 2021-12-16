@@ -43,4 +43,9 @@ public class MatriculaServiceImpl implements IMatriculaService{
 		return (List<Matricula>) repository.findAll();
 	}
 
+	@Override
+	public Matricula buscarPorNombreUsuario(String nombreUsuario) {
+		return repository.buscarPorNombreUsuario(nombreUsuario);
+	}
+
 }
