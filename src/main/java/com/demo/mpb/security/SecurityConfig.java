@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/distrito/**").hasAnyAuthority("DIRECTOR","SECRETARIA")
 				.antMatchers("/grado/**").hasAnyAuthority("DIRECTOR","SECRETARIA")
 				.antMatchers("/horario/**").hasAnyAuthority("DIRECTOR","SECRETARIA","ALUMNO")
-				.antMatchers("/matricula/**").hasAnyAuthority("DIRECTOR","SECRETARIA")
+				.antMatchers("/matricula/**").hasAnyAuthority("DIRECTOR","SECRETARIA","ALUMNO")
 				//.antMatchers("/rol/**").hasAuthority("DIRECTOR")
 				.antMatchers("/seccion/**").hasAnyAuthority("DIRECTOR","SECRETARIA","DOCENTE")
 				.antMatchers("/trabajador/**").hasAnyAuthority("DIRECTOR","SUB DIRECTOR");

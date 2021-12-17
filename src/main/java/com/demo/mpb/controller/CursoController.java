@@ -68,4 +68,15 @@ public class CursoController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		return new ResponseEntity<>(curso,HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/find/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Devuelve la lista de los cursos por grado",httpMethod = "GET",nickname = "listarCursoPorGrado")
+	public ResponseEntity<?> listarCursoPorGrado(@ApiParam(value = "Identificador del Grado", required = true)
+													@PathVariable(name = "id") Integer id){
+		List<Curso> lista = service.listarCursoPorGrado(id);
+		if(lista == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(lista,HttpStatus.OK);
+	}
 }

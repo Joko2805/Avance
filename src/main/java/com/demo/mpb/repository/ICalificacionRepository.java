@@ -1,5 +1,7 @@
 package com.demo.mpb.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -14,4 +16,7 @@ public interface ICalificacionRepository extends CrudRepository<Calificacion, In
 	@Modifying
 	@Query(value = "UPDATE Calificacion c SET c.estado = 0 WHERE c.calificacionId = :id")
 	void eliminar(@Param("id") Integer id);
+	
+	@Query(value = "SELECT c FROM Calificacion c WHERE c.matricula.matriculaId = :id")
+	List<Calificacion> calificacionPorMatricula(@Param("id") Integer id);
 }

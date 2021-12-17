@@ -43,4 +43,9 @@ public class CursoServiceImpl implements ICursoService{
 		return (List<Curso>) repository.findAll();
 	}
 
+	@Override
+	public List<Curso> listarCursoPorGrado(Integer gradoId) {
+		return repository.listarCursosPorGrado(gradoId);
+	}
+
 }

@@ -43,5 +43,8 @@ public class CalificacionServiceImpl implements ICalificacionService{
 		return (List<Calificacion>) repository.findAll();
 	}
 
-
+	@Override
+	public List<Calificacion> calificacionPorMatricula(Integer id) {
+		return repository.calificacionPorMatricula(id);
+	}
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.demo.mpb.model.Alumno;
 import com.demo.mpb.model.Matricula;
 import com.demo.mpb.service.IMatriculaService;
 

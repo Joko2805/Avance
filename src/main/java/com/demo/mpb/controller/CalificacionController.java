@@ -69,4 +69,13 @@ public class CalificacionController {
 		return new ResponseEntity<>(calificacion,HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/find/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Devuelve la lista de las calificaciones por matricula",httpMethod = "GET",nickname = "listarCalificacionesPorMatricula")
+	public ResponseEntity<?> listar(@ApiParam(value = "identificador de la matricula",required = true)
+										@PathVariable(name = "id") Integer id){
+		List<Calificacion> lista = service.listar();
+		if(lista == null) 
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(lista,HttpStatus.OK);
+	}
 }
