@@ -43,4 +43,9 @@ public class HorarioServiceImpl implements IHorarioService{
 		return (List<Horario>) repository.findAll();
 	}
 
+	@Override
+	public List<Horario> horarioPorSeccion(Integer id) {
+		return repository.horarioPorSeccion(id);
+	}
+
 }

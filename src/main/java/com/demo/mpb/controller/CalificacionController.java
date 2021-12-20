@@ -73,7 +73,7 @@ public class CalificacionController {
 	@ApiOperation(value = "Devuelve la lista de las calificaciones por matricula",httpMethod = "GET",nickname = "listarCalificacionesPorMatricula")
 	public ResponseEntity<?> listar(@ApiParam(value = "identificador de la matricula",required = true)
 										@PathVariable(name = "id") Integer id){
-		List<Calificacion> lista = service.listar();
+		List<Calificacion> lista = service.calificacionPorMatricula(id);
 		if(lista == null) 
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		return new ResponseEntity<>(lista,HttpStatus.OK);

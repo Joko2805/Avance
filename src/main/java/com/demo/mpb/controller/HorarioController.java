@@ -75,4 +75,12 @@ public class HorarioController {
 			throw new ResponseStatusException(HttpStatus.OK);
 		return new ResponseEntity<>(horario,HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/find/{id}", produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	@ApiOperation(value = "Devuelve la lista de los horarios por seccion",httpMethod = "GET",nickname = "listarHorariosPorSeccion")
+	public ResponseEntity<?> horarioPorSeccion(@ApiParam(value = "Identificador de la seccion", required = true)
+													@PathVariable(name = "id")Integer id){
+		List<Horario> lista = service.horarioPorSeccion(id);
+		return new ResponseEntity<>(lista,HttpStatus.OK);
+	}
 }
