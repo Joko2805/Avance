@@ -59,7 +59,10 @@ public class UsuarioServiceImpl implements IUsuarioService, UserDetailsService{
 
 	@Override
 	public void actualizar(Usuario objeto) {
-		repository.save(objeto);	}
+		String passwordBase64 = passwordEncoder.encode(objeto.getContrasenia());
+		objeto.setContrasenia(passwordBase64);
+		repository.save(objeto);		
+	}
 
 	@Override
 	public void eliminar(Integer id) {

@@ -18,6 +18,4 @@ public interface IUsuarioRepository extends CrudRepository<Usuario, Integer>{
 	void eliminar(@Param("id") Integer id);
 	
 	Optional<Usuario> findByNombreUsuario(String nombreUsuario);
-	
-	 
 }
